@@ -273,7 +273,7 @@ def fracCADEvaluation(gt_list, pred_list, pred_info_list, title, eps=0.):
 from optparse import OptionParser
 
 if __name__ == '__main__':
-    val_split = np.array(pd.read_csv('../PEData/processed_itk/test_split_cad.csv'))[:, 0].tolist()
+    val_split = np.array(pd.read_csv('./PEData/test_split_cad.csv'))[:, 0].tolist()
 
     gt_root = './PEData/CAD_PE_data/label'
     pred_root = './pred_itk/aanet_crop2_sth50'

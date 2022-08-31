@@ -299,7 +299,7 @@ if __name__ == '__main__':
     parser.add_option('--model',
                       type='str',
                       dest='model',
-                      default='aanet_test_ms',
+                      default='aanet',
                       help='model name of this training run')
     parser.add_option('--gpu',
                       type='str',
@@ -321,5 +321,5 @@ if __name__ == '__main__':
     model = nn.parallel.DataParallel(model)
     model.to(DEVICE)
     model.eval()
-    test_model(model, '../PEData/processed_itk/test_split_cad.csv', options.name, seg_thresh=options.thresh,
+    test_model(model, './PEData/test_split_cad.csv', options.name, seg_thresh=options.thresh,
                hu_low=-100, hu_high=500)

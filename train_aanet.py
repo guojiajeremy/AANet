@@ -59,39 +59,33 @@ if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option('--epochs',
                       dest='epochs',
-                      default=100,
+                      default=500,
                       type='int',
                       help='number of epochs')
     parser.add_option('-b',
                       '--batch_size',
                       dest='batch_size',
-                      default=3,
+                      default=8,
                       type='int',
-                      help='batch size')
+                      help='batch size, CT in one batch')
     parser.add_option('-s',
                       '--sample_num',
                       dest='sample_num',
                       default=2,
                       type='int',
-                      help='sample_num per CT')
+                      help='sampled patch per CT. The actual image batch size is batch_size*sample_num')
     parser.add_option('-w',
                       '--num_workers',
                       dest='num_workers',
                       default=4,
                       type='int',
-                      help='num_workers ')
+                      help='num_workers')
     parser.add_option('-l',
                       '--learn_rate',
                       dest='learn_rate',
                       default=1e-4,
                       type='float',
-                      help='learn_rate')
-    parser.add_option('-n',
-                      '--norm',
-                      dest='norm',
-                      default='batchnorm',
-                      type='str',
-                      help='norm layer')
+                      help='learn rate before warmup, will be *10 after warmup')
     parser.add_option('--hu_low',
                       dest='hu_low',
                       default=-100,
@@ -113,7 +107,7 @@ if __name__ == '__main__':
                       type='str',
                       dest='unique_name',
                       default='det2',
-                      help='use which model')
+                      help='name of this experiment')
     parser.add_option('--seed',
                       type='int',
                       dest='seed',
@@ -124,11 +118,7 @@ if __name__ == '__main__':
                       dest='valid',
                       default='1',
                       help='if valid')
-    parser.add_option('--tver_group',
-                      type='int',
-                      dest='tver_group',
-                      default='1',
-                      help='tver_group')
+
     (options, args) = parser.parse_args()
     set_seed(options.seed)
     unique_name = options.unique_name
@@ -165,8 +155,8 @@ if __name__ == '__main__':
                                              sample_num=options.sample_num, obj_crop=False, blank_side=0)
 
     print('Dataset Prepare!')
-    train_split = np.array(pd.read_csv('../PEData/processed_itk/train_split_cad.csv'))[:, 0].tolist()
-    val_split = np.array(pd.read_csv('../PEData/processed_itk/test_split_cad.csv'))[:, 0].tolist()
+    train_split = np.array(pd.read_csv('./PEData/train_split_cad.csv'))[:, 0].tolist()
+    val_split = np.array(pd.read_csv('./PEData/test_split_cad.csv'))[:, 0].tolist()
 
     train_dataset = dataIO.dataset.DatasetITKV(image_root, label_root, vessel_root, train_split,
                                                crop_fn=crop_fn_train, transform_post=train_transform)

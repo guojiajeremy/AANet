@@ -74,8 +74,6 @@ for ct_root, label_root, mask_root, vessel_root in zip(ct_roots, label_roots, ma
     files = os.listdir(ct_root)
 
     for file in files:
-        # if file != '1001897416_001.nii.gz':
-        #     continue
 
         ct_path = os.path.join(ct_root, file)
         label_path = os.path.join(label_root, file.replace('.nrrd', 'RefStd.nrrd'))
