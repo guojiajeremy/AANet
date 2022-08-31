@@ -44,14 +44,14 @@ if 'lustre' in os.getcwd():
     crop_size = [96, 96, 96]
 else:
     print('On Local')
-    os.environ["CUDA_VISIBLE_DEVICES"] = "2,3"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
     crop_size = [96, 96, 96]
 
 DEVICE = 'cuda'
 
-image_root = '../PEData/processed_itk/image'
-label_root = '../PEData/processed_itk/label'
-vessel_root = '../PEData/processed_itk/vessel2'
+image_root = './PEData/processed_itk/image'
+label_root = './PEData/processed_itk/label'
+vessel_root = './PEData/processed_itk/vessel'
 
 save_model_dir = './save_models'
 

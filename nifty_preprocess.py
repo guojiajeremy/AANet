@@ -61,14 +61,14 @@ def redirection_simg(itkimg, target_direction=(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0
     return fliped_img
 
 
-ct_roots = ['../PEData/CAD_PE_data/images']
-label_roots = ['../PEData/CAD_PE_data/label']
-mask_roots = ['../PEData/CAD_PE_data/vessel']
-vessel_roots = ['../PEData/CAD_PE_data/vessel']
+ct_roots = ['./PEData/CAD_PE_data/images']
+label_roots = ['./PEData/CAD_PE_data/label']
+mask_roots = ['./PEData/CAD_PE_data/vessel']
+vessel_roots = ['./PEData/CAD_PE_data/vessel']
 
-save_ct_root = '../PEData/processed_itk/image'
-save_label_root = '../PEData/processed_itk/label'
-save_vessel_root = '../PEData/processed_itk/vessel'
+save_ct_root = './PEData/processed_itk/image'
+save_label_root = './PEData/processed_itk/label'
+save_vessel_root = './PEData/processed_itk/vessel'
 
 for ct_root, label_root, mask_root, vessel_root in zip(ct_roots, label_roots, mask_roots, vessel_roots):
     files = os.listdir(ct_root)

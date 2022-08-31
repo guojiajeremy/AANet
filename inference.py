@@ -117,8 +117,8 @@ from optparse import OptionParser
 
 
 def test_model(model, split_path, save_name, seg_thresh=0.5, hu_low=-100, hu_high=500):
-    ct_root = '../PEData/CAD_PE_data/image'
-    mask_root = '../PEData/CAD_PE_data/vessel'  # lung mask
+    ct_root = './PEData/CAD_PE_data/image'
+    mask_root = './PEData/CAD_PE_data/vessel'  # lung mask
 
     val_split = np.array(pd.read_csv(split_path))[:, 0].tolist()
 
