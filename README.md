@@ -1,6 +1,15 @@
 # AANet
 AANet: Artery-Aware Network for Pulmonary Embolism Detection in CTPA Images, MICCAI2022
 
+# Requirements
+pytoch==1.1.0 or 1.3.1 *Newer version may need code adaptation.*
+simpleitk==1.2.4
+tensorboardX
+scikit-image
+scikit-learn
+tqdm
+pandas
+
 # Data Prepare:
 1.	The vessel masks and lung masks are already open sourced in:
 AANet/PEData/CAD_PE_data/vessel
